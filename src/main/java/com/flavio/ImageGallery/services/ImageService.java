@@ -18,8 +18,9 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
-    public String uploadImage(MultipartFile file) throws IOException {
+    public String uploadImage(String title, MultipartFile file) throws IOException {
         imageRepository.save(Image.builder()
+                .imageTitle(title)
                 .imageName(file.getOriginalFilename())
                 .type(file.getContentType())
                 .imageData(ImageUtil.compressImage(file.getBytes())).build());
@@ -33,6 +34,7 @@ public class ImageService {
 
         return Image.builder()
                 .id(dbImage.get().getId())
+                .imageTitle(dbImage.get().getImageTitle())
                 .imageName(dbImage.get().getImageName())
                 .type(dbImage.get().getType())
                 .imageData(ImageUtil.decompressImage(dbImage.get().getImageData())).build();
