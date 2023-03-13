@@ -45,4 +45,11 @@ public class ImageService {
         Optional<Image> dbImage = imageRepository.findByImageName(name);
         return ImageUtil.decompressImage(dbImage.get().getImageData());
     }
+
+    @Transactional
+    public void deleteImage(Long id) {
+        if(imageRepository.existsById(id)) {
+            imageRepository.deleteById(id);
+        }
+    }
 }
