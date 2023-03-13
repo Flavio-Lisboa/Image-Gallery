@@ -32,6 +32,7 @@ public class ImageService {
         Optional<Image> dbImage = imageRepository.findByImageName(name);
 
         return Image.builder()
+                .id(dbImage.get().getId())
                 .imageName(dbImage.get().getImageName())
                 .type(dbImage.get().getType())
                 .imageData(ImageUtil.decompressImage(dbImage.get().getImageData())).build();
