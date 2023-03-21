@@ -41,8 +41,8 @@ public class ImageService {
     }
 
     @Transactional
-    public byte[] getImage(String name) {
-        Optional<Image> dbImage = imageRepository.findByImageName(name);
+    public byte[] getImage(String title) {
+        Optional<Image> dbImage = imageRepository.findByImageTitle(title);
         return ImageUtil.decompressImage(dbImage.get().getImageData());
     }
 

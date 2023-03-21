@@ -1,6 +1,5 @@
 package com.flavio.ImageGallery.controllers;
 
-import com.flavio.ImageGallery.dto.ImageDTO;
 import com.flavio.ImageGallery.entities.Image;
 import com.flavio.ImageGallery.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 
 @RestController
@@ -33,11 +31,11 @@ public class ImageController {
         return ResponseEntity.status(HttpStatus.OK).body(image);
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<?> getImageByName(@PathVariable("name") String name) {
-        byte[] image = imageService.getImage(name);
+    @GetMapping("/{title}")
+    public ResponseEntity<?> getImageByTitle(@PathVariable("title") String title) {
+        byte[] image = imageService.getImage(title);
 
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.IMAGE_PNG).body(image);
     }
 
     @DeleteMapping("/delete/{id}")
