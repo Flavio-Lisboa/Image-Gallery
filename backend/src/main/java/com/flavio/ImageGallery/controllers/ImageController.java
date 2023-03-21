@@ -18,10 +18,11 @@ public class ImageController {
     private ImageService imageService;
 
     @PostMapping
+    @CrossOrigin
     public ResponseEntity<?> uploadImage(@RequestParam("title") String title, @RequestParam("image") MultipartFile file) throws IOException {
-        String response = imageService.uploadImage(title, file);
+        imageService.uploadImage(title, file);
 
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/info/{name}")

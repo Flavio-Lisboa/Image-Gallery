@@ -1,32 +1,23 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup} from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { Image } from 'src/app/Image';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-new-image',
   templateUrl: './new-image.component.html',
   styleUrls: ['./new-image.component.css']
 })
-export class NewImageComponent {
-  title: string = '';
-  imageURL: string = '';
+export class NewImageComponent implements OnInit{
 
-  uploadForm: FormGroup;
-  constructor(public fb: FormBuilder) {
-    this.uploadForm = this.fb.group({
-      image: [null],
-    })
-  }
+  constructor(private imageService: ImageService) {}
 
-  showPreview(event: any) {
-    const file = (event.target as HTMLInputElement).files![0];
-    this.uploadForm.patchValue({
-      image: file
-    });
-    this.uploadForm.get('image')!.updateValueAndValidity()
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageURL = reader.result as string;
-    }
-    reader.readAsDataURL(file)
+  ngOnInit(): void {}
+
+  async createHandler(image: Image) {
+    const formData = new FormData();
+    formData.append('title', image.title);
+    formData.append('image', image.image);
+
+    await this.imageService.createImage(formData).subscribe();
   }
 }

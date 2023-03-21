@@ -18,14 +18,12 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
-    public String uploadImage(String title, MultipartFile file) throws IOException {
+    public void uploadImage(String title, MultipartFile file) throws IOException {
         imageRepository.save(Image.builder()
                 .imageTitle(title)
                 .imageName(file.getOriginalFilename())
                 .type(file.getContentType())
                 .imageData(ImageUtil.compressImage(file.getBytes())).build());
-
-        return "Image Uploaded successfully: " + file.getOriginalFilename();
     }
 
     @Transactional
