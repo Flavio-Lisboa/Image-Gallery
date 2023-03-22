@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Image } from 'src/app/Image';
 import { ImageService } from 'src/app/services/image.service';
 
@@ -9,7 +10,10 @@ import { ImageService } from 'src/app/services/image.service';
 })
 export class NewImageComponent implements OnInit{
 
-  constructor(private imageService: ImageService) {}
+  constructor(
+    private imageService: ImageService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -19,5 +23,7 @@ export class NewImageComponent implements OnInit{
     formData.append('image', image.image);
 
     await this.imageService.createImage(formData).subscribe();
+
+    this.router.navigate(['/']);
   }
 }

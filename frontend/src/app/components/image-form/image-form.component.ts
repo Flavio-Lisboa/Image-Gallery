@@ -13,7 +13,8 @@ export class ImageFormComponent implements OnInit{
 
   imageForm!: FormGroup;
 
-  title: string = '';
+  title = new FormControl('');
+
   imageURL: string = '';
 
   ngOnInit(): void {
