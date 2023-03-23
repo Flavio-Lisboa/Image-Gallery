@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Image } from 'src/app/Image';
+import { ImageUpload } from 'src/app/ImageUpload';
 import { ImageService } from 'src/app/services/image.service';
 
 @Component({
@@ -17,10 +17,11 @@ export class NewImageComponent implements OnInit{
 
   ngOnInit(): void {}
 
-  async createHandler(image: Image) {
+  async createHandler(image: ImageUpload) {
     const formData = new FormData();
-    formData.append('title', image.title);
-    formData.append('image', image.image);
+
+    formData.append('imageTitle', image.imageTitle);
+    formData.append('imageName', image.imageName);
 
     await this.imageService.createImage(formData).subscribe();
 

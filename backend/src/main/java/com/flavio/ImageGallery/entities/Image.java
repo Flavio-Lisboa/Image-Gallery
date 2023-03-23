@@ -1,5 +1,6 @@
 package com.flavio.ImageGallery.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,9 +20,11 @@ public class Image {
     private Long id;
     private String imageTitle;
     private String imageName;
+    @JsonIgnore
     private String type;
 
     @Lob
     @Column(length = 1000)
+    @JsonIgnore
     private byte[] imageData;
 }

@@ -1,8 +1,8 @@
 <form (ngSubmit)="submit()" [formGroup]="imageForm" #formDir="ngForm">
     <h2>Add Image</h2>
     <div class="form-group">
-        <label for="Title">Title:</label>
-        <input type="text" [formControl]="title" formControlName="title" placeholder="Enter the title of the image">
+        <label for="title">Title:</label>
+        <input type="text" [(ngModel)]="title" formControlName="imageTitle" placeholder="Enter the title of the image">
     </div>
     <div class="form-group">
         <label for="image">Image:</label>
@@ -11,7 +11,7 @@
     <div class="polaroid" *ngIf="imageURL && imageURL !== ''">
         <img [src]="imageURL">
         <div class="container">
-            <p>{{ title.value | titlecase }}</p>
+            <p>{{ title | titlecase }}</p>
         </div>
     </div>
     <div class="form-submit">

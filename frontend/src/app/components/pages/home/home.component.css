@@ -1,0 +1,28 @@
+.home {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.polaroid {
+    width: 20rem;
+    background-color: #FFF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 1rem 1rem 1.6rem 1rem;
+}
+
+img {
+    width: 100%;
+    height: 15rem;
+}
+
+img:hover {
+    transform: scaleX(-1);
+}
+
+.container {
+    text-align: center;
+    padding: 10px 20px;
+    border-top: 1px solid #dcdcdc;
+}

@@ -1,1 +1,8 @@
-<p>home</p>
+<div class="home">
+    <div class="polaroid" *ngFor="let image of images">
+        <img src="{{'data:image/jpg;base64,' + image.imageData}}">
+        <div class="container">
+            <p>{{ image.image.imageTitle | titlecase}}</p>
+        </div>
+    </div>
+</div>

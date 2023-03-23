@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import { Image } from 'src/app/Image';
+import { ImageUpload } from 'src/app/ImageUpload';
 
 @Component({
   selector: 'app-image-form',
@@ -9,32 +9,29 @@ import { Image } from 'src/app/Image';
   styleUrls: ['./image-form.component.css']
 })
 export class ImageFormComponent implements OnInit{
-  @Output() onSubmit = new EventEmitter<Image>();
+  @Output() onSubmit = new EventEmitter<ImageUpload>();
 
   imageForm!: FormGroup;
 
-  title = new FormControl('');
-
+  title: string = '';
   imageURL: string = '';
 
   ngOnInit(): void {
     this.imageForm = new FormGroup({
-      title: new FormControl(''),
-      image: new FormControl('')
+      imageTitle: new FormControl(''),
+      imageName: new FormControl('')
     });
   }
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
-
-    this.imageForm.patchValue({ image: file});
+    this.imageForm.patchValue({ imageName : file});
   }
 
   submit() {
     this.onSubmit.emit(this.imageForm.value);
   }
 
-  
   uploadForm: FormGroup;
   constructor(public fb: FormBuilder) {
     this.uploadForm = this.fb.group({

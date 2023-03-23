@@ -1,5 +1,8 @@
 export interface Image {
-    id?: number;
-    title: string;
-    image: string;
+  image: {
+    id: number;
+    imageTitle: string;
+    imageName: string;
+  }
+  imageData: string;
 }
