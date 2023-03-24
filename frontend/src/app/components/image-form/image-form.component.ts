@@ -51,4 +51,4 @@ export class ImageFormComponent implements OnInit{
     }
     reader.readAsDataURL(file)
   }
-}
+} 

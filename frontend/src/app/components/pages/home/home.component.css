@@ -5,6 +5,26 @@
     justify-content: space-evenly;
 }
 
+.home-container {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.home-container form {
+    width: 30%;
+}
+
+.home-container input {
+    padding: 0.5rem;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #cdcdcd;
+    border-radius: 4px;
+}
+
 .polaroid {
     width: 20rem;
     background-color: #FFF;

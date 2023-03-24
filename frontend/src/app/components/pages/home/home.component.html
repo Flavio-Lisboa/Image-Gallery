@@ -1,3 +1,8 @@
+<div class="home-container">
+    <form action="">
+        <input type="text" placeholder="Search image..." (input)="search($event)">
+    </form>
+</div>
 <div class="home">
     <div class="polaroid" *ngFor="let image of images">
         <img src="{{'data:image/jpg;base64,' + image.imageData}}">
